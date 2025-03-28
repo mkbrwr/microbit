@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "microbit",
+    platforms: [.macOS("14.0")],
     products: [
         .library(
             name: "microbit",

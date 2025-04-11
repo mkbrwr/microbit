@@ -20,12 +20,12 @@ struct Game {
             p0.out.modify { rw in
                 rw.raw.pin21 = isOn ? 1 : 0
             }
-            for _ in 0..<4_000_000 {
+            for _ in 0..<4000_000 {
                 nop()
             }
             isOn = !isOn
             counter += 1
-            print("Hello, world!")
+            serialPutc(UInt8(counter))
         }
     }
 
@@ -63,18 +63,10 @@ struct Game {
         }
     }
 
-    static func serialPutc(_ char: UInt32) {
-        while uart0.events_txdrdy.read().events_txdrdy_field == .NotGenerated {}
+    static func serialPutc(_ char: UInt8) {
         uart0.txd.modify { r, w in
-            w.raw.txd_field = char
+            w.raw.txd_field = UInt32(char)
         }
-
         while uart0.events_txdrdy.read().events_txdrdy_field == .NotGenerated {}
     }
-}
-
-@_cdecl("swift_putchar_impl")
-func swiftPutcharImpl(_ ch: Int32) -> Int32 {
-    Game.serialPutc(UInt32(ch))
-    return ch
 }

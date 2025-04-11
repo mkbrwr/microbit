@@ -1,7 +1,5 @@
-SWIFT_TOOLCHAIN := ~/Developer/swift-6.1-DEVELOPMENT-SNAPSHOT-2025-03-03-a-debian12/usr/bin
-SWIFT := $(SWIFT_TOOLCHAIN)/swift
-SWIFTC := $(SWIFT_TOOLCHAIN)/swiftc
-CLANG := $(SWIFT_TOOLCHAIN)/clang
+SWIFT := ~/.swiftly/bin/swift
+CLANG := ~/.swiftly/bin/clang
 OBJCOPY := objcopy
 
 TARGET := armv7em-none-none-eabi
@@ -29,13 +27,13 @@ build:
     -o a.elf
 
 	@echo "making HEX..."
-	objcopy -O ihex a.elf a.hex
+	$(OBJCOPY) -O ihex a.elf a.hex
 
 
 .PHONY: flash
 flash:
 	@echo "flashing..."
-	@mv a.hex /media/mykhailo/MICROBIT
+	@mv a.hex /Volumes/MICROBIT
 
 .PHONY: run
 run: build flash

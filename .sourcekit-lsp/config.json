@@ -1,7 +1,17 @@
 {
+  "defaultWorkspaceType": "swiftPM",
+
   "swiftPM": {
     "configuration": "release",
     "triple": "armv7em-none-none-eabi",
-    "swiftCompilerFlags": ["-Xfrontend", "-disable-stack-protector"]
+
+    "toolsets": ["/Users/mkbrwr/Developer/microbit/toolset.json"],
+
+    "swiftCompilerFlags": [
+      "-enable-experimental-feature",
+      "Embedded",
+      "-enable-experimental-feature",
+      "Extern"
+    ]
   }
 }

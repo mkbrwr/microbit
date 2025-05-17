@@ -28,5 +28,16 @@ SECTIONS {
         __end = .;
     } > RAM
 
+    /DISCARD/ : { *(.swift_modhash*) }
+    /* ARM metadata sections */
+    /DISCARD/ : { *(.ARM.attributes*) *(.ARM.exidx) }
+
+    /* ELF metadata sections */
+    .symtab   : { *(.symtab) }
+    .strtab   : { *(.strtab) }
+    .shstrtab : { *(.shstrtab) }
+    .debug    : { *(.debug*) }
+    .comment  : { *(.comment) }
+
     __stack = ORIGIN(RAM) + LENGTH(RAM);
 }

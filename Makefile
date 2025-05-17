@@ -1,6 +1,6 @@
 SWIFT := ~/.swiftly/bin/swift
 CLANG := ~/.swiftly/bin/clang
-OBJCOPY := objcopy
+OBJCOPY := /opt/homebrew/opt/binutils/bin/objcopy
 
 TARGET := armv7em-none-none-eabi
 
@@ -10,25 +10,11 @@ build:
 	$(SWIFT) build \
 		--configuration release \
 		--verbose \
+		--toolset toolset.json \
 		--triple $(TARGET) \
-		-Xcc -ffreestanding \
-		-Xswiftc -Xfrontend -Xswiftc -disable-stack-protector
-
-	$(CLANG) -target $(TARGET) -c Startup.c -o .build/Startup.o
-
-	$(CLANG) -target $(TARGET) -c Support.c -o .build/Support.o
-
-	@echo "linking..."
-	$(CLANG) -v -target $(TARGET) -fuse-ld=lld -nostdlib -static \
-    -Wl,-e,vector_table -Wl,--gc-sections -Wl,-T,linkerscript.ld \
-	.build/Startup.o \
-	.build/Support.o \
-    .build/release/libmicrobit.a \
-    -o a.elf
 
 	@echo "making HEX..."
-	$(OBJCOPY) -O ihex a.elf a.hex
-
+	$(OBJCOPY) -O ihex .build/release/microbit a.hex
 
 .PHONY: flash
 flash:
@@ -42,5 +28,3 @@ run: build flash
 clean:
 	@echo "cleaning..."
 	@$(SWIFT) package clean
-	@rm -f a.elf
-	@rm -rf .build

@@ -2,7 +2,7 @@ import Device
 import Support
 
 @main
-struct Game {
+struct Application {
     static func main() {
         p0.pin_cnf[21].modify { rw in
             rw.raw.dir = 1

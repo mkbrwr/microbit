@@ -19,7 +19,7 @@ build:
 .PHONY: flash
 flash:
 	@echo "flashing..."
-	@mv a.hex /Volumes/MICROBIT
+	@cp a.hex /Volumes/MICROBIT
 
 .PHONY: run
 run: build flash

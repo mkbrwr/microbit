@@ -1,12 +1,14 @@
 int main(void);
 
 extern unsigned char __stack[];
-extern char *heapptr;
+extern char __bss_start;
+extern char __bss_end;
 
-void __reset(void)
-{
-    for (int i = 0; i < 64 * 1024; i++) {
-        *(heapptr + i) = 0;
+void __reset(void) {
+    // Zero BSS using actual linker-provided bounds
+    char *bss = &__bss_start;
+    while (bss < &__bss_end) {
+        *bss++ = 0;
     }
     main();
 }

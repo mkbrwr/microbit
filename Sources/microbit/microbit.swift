@@ -28,8 +28,8 @@ struct Application {
             isOn = !isOn
 
             counter += 1
-            for x in arr {
-                serialPutc(UInt8(counter))
+            for i in arr {
+                serialPutc(UInt8(counter + i))
             }
         }
     }

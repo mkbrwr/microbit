@@ -1,6 +1,6 @@
 MEMORY {
     FLASH   (rx)  : ORIGIN = 0x00000000,      LENGTH = 512K
-    RAM     (rwx) : ORIGIN = 0x20000000,      LENGTH = 128K
+    RAM     (rwx) : ORIGIN = 0x20000000,      LENGTH = 64K /* Full RAM is 128K */
 }
 
 SECTIONS {
@@ -31,6 +31,7 @@ SECTIONS {
     /DISCARD/ : { *(.swift_modhash*), *(.swift_ast) }
     /* ARM metadata sections */
     /DISCARD/ : { *(.ARM.attributes*) *(.ARM.exidx) }
+    /DISCARD/ : { *(.got) }
 
     /* ELF metadata sections */
     .symtab   : { *(.symtab) }

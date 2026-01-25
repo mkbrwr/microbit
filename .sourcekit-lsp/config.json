@@ -1,17 +1,7 @@
 {
-  "defaultWorkspaceType": "swiftPM",
-
   "swiftPM": {
     "configuration": "release",
     "triple": "armv7em-none-none-eabi",
-
-    "toolsets": ["/Users/mkbrwr/Developer/microbit/toolset.json"],
-
-    "swiftCompilerFlags": [
-      "-enable-experimental-feature",
-      "Embedded",
-      "-enable-experimental-feature",
-      "Extern"
-    ]
+    "toolsets": "toolset.json"
   }
 }

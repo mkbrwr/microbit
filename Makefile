@@ -1,7 +1,5 @@
 SWIFT := ~/.swiftly/bin/swift
-CLANG := ~/.swiftly/bin/clang
 OBJCOPY := /opt/homebrew/opt/binutils/bin/objcopy
-
 TARGET := armv7em-none-none-eabi
 
 .PHONY: build
@@ -19,12 +17,4 @@ build:
 .PHONY: flash
 flash:
 	@echo "flashing..."
-	@cp a.hex /Volumes/MICROBIT
-
-.PHONY: run
-run: build flash
-
-.PHONY: clean
-clean:
-	@echo "cleaning..."
-	@$(SWIFT) package clean
+	@pyocd flash a.hex

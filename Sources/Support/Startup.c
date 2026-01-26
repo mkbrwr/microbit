@@ -1,6 +1,6 @@
 int main(void);
 
-extern unsigned char __stack[];
+extern char __stack[];
 extern char __bss_start;
 extern char __bss_end;
 

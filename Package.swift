@@ -17,12 +17,7 @@ let package = Package(
         .executableTarget(
             name: "microbit",
             dependencies: [
-                "Device", "Support",
-            ]),
-        .target(
-            name: "Device",
-            dependencies: [
-                .product(name: "MMIO", package: "swift-mmio")
+                "Support", .product(name: "MMIO", package: "swift-mmio"),
             ]),
         .target(name: "Support"),
     ]

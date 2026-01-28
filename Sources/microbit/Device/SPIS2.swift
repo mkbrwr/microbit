@@ -2,6 +2,6 @@
 
 import MMIO
 
-/// GPIO Port 2
-public typealias P1 = P0
+/// SPI Slave 2
+typealias SPIS2 = SPIS0
 

@@ -4,875 +4,875 @@ import MMIO
 
 /// Clock control
 @RegisterBlock
-public struct CLOCK {
+struct CLOCK {
     /// Start HFXO crystal oscillator
     @RegisterBlock(offset: 0x0)
-    public var tasks_hfclkstart: Register<TASKS_HFCLKSTART>
+    var tasks_hfclkstart: Register<TASKS_HFCLKSTART>
 
     /// Stop HFXO crystal oscillator
     @RegisterBlock(offset: 0x4)
-    public var tasks_hfclkstop: Register<TASKS_HFCLKSTOP>
+    var tasks_hfclkstop: Register<TASKS_HFCLKSTOP>
 
     /// Start LFCLK
     @RegisterBlock(offset: 0x8)
-    public var tasks_lfclkstart: Register<TASKS_LFCLKSTART>
+    var tasks_lfclkstart: Register<TASKS_LFCLKSTART>
 
     /// Stop LFCLK
     @RegisterBlock(offset: 0xc)
-    public var tasks_lfclkstop: Register<TASKS_LFCLKSTOP>
+    var tasks_lfclkstop: Register<TASKS_LFCLKSTOP>
 
     /// Start calibration of LFRC
     @RegisterBlock(offset: 0x10)
-    public var tasks_cal: Register<TASKS_CAL>
+    var tasks_cal: Register<TASKS_CAL>
 
     /// Start calibration timer
     @RegisterBlock(offset: 0x14)
-    public var tasks_ctstart: Register<TASKS_CTSTART>
+    var tasks_ctstart: Register<TASKS_CTSTART>
 
     /// Stop calibration timer
     @RegisterBlock(offset: 0x18)
-    public var tasks_ctstop: Register<TASKS_CTSTOP>
+    var tasks_ctstop: Register<TASKS_CTSTOP>
 
     /// HFXO crystal oscillator started
     @RegisterBlock(offset: 0x100)
-    public var events_hfclkstarted: Register<EVENTS_HFCLKSTARTED>
+    var events_hfclkstarted: Register<EVENTS_HFCLKSTARTED>
 
     /// LFCLK started
     @RegisterBlock(offset: 0x104)
-    public var events_lfclkstarted: Register<EVENTS_LFCLKSTARTED>
+    var events_lfclkstarted: Register<EVENTS_LFCLKSTARTED>
 
     /// Calibration of LFRC completed
     @RegisterBlock(offset: 0x10c)
-    public var events_done: Register<EVENTS_DONE>
+    var events_done: Register<EVENTS_DONE>
 
     /// Calibration timer timeout
     @RegisterBlock(offset: 0x110)
-    public var events_ctto: Register<EVENTS_CTTO>
+    var events_ctto: Register<EVENTS_CTTO>
 
     /// Calibration timer has been started and is ready to process new tasks
     @RegisterBlock(offset: 0x128)
-    public var events_ctstarted: Register<EVENTS_CTSTARTED>
+    var events_ctstarted: Register<EVENTS_CTSTARTED>
 
     /// Calibration timer has been stopped and is ready to process new tasks
     @RegisterBlock(offset: 0x12c)
-    public var events_ctstopped: Register<EVENTS_CTSTOPPED>
+    var events_ctstopped: Register<EVENTS_CTSTOPPED>
 
     /// Enable interrupt
     @RegisterBlock(offset: 0x304)
-    public var intenset: Register<INTENSET>
+    var intenset: Register<INTENSET>
 
     /// Disable interrupt
     @RegisterBlock(offset: 0x308)
-    public var intenclr: Register<INTENCLR>
+    var intenclr: Register<INTENCLR>
 
     /// Status indicating that HFCLKSTART task has been triggered
     @RegisterBlock(offset: 0x408)
-    public var hfclkrun: Register<HFCLKRUN>
+    var hfclkrun: Register<HFCLKRUN>
 
     /// HFCLK status
     @RegisterBlock(offset: 0x40c)
-    public var hfclkstat: Register<HFCLKSTAT>
+    var hfclkstat: Register<HFCLKSTAT>
 
     /// Status indicating that LFCLKSTART task has been triggered
     @RegisterBlock(offset: 0x414)
-    public var lfclkrun: Register<LFCLKRUN>
+    var lfclkrun: Register<LFCLKRUN>
 
     /// LFCLK status
     @RegisterBlock(offset: 0x418)
-    public var lfclkstat: Register<LFCLKSTAT>
+    var lfclkstat: Register<LFCLKSTAT>
 
     /// Copy of LFCLKSRC register, set when LFCLKSTART task was triggered
     @RegisterBlock(offset: 0x41c)
-    public var lfclksrccopy: Register<LFCLKSRCCOPY>
+    var lfclksrccopy: Register<LFCLKSRCCOPY>
 
     /// Clock source for the LFCLK
     @RegisterBlock(offset: 0x518)
-    public var lfclksrc: Register<LFCLKSRC>
+    var lfclksrc: Register<LFCLKSRC>
 
     /// HFXO debounce time. The HFXO is started by triggering the TASKS_HFCLKSTART task.
     @RegisterBlock(offset: 0x528)
-    public var hfxodebounce: Register<HFXODEBOUNCE>
+    var hfxodebounce: Register<HFXODEBOUNCE>
 
     /// LFXO debounce time. The LFXO is started by triggering the TASKS_LFCLKSTART task when the LFCLKSRC register is configured for Xtal.
     @RegisterBlock(offset: 0x52c)
-    public var lfxodebounce: Register<LFXODEBOUNCE>
+    var lfxodebounce: Register<LFXODEBOUNCE>
 
     /// Calibration timer interval
     @RegisterBlock(offset: 0x538)
-    public var ctiv: Register<CTIV>
+    var ctiv: Register<CTIV>
 
     /// Clocking options for the trace port debug interface
     @RegisterBlock(offset: 0x55c)
-    public var traceconfig: Register<TRACECONFIG>
+    var traceconfig: Register<TRACECONFIG>
 }
 
 extension CLOCK {
     /// Start HFXO crystal oscillator
     @Register(bitWidth: 32)
-    public struct TASKS_HFCLKSTART {
+    struct TASKS_HFCLKSTART {
         /// Start HFXO crystal oscillator
         @WriteOnly(bits: 0..<1, as: TASKS_HFCLKSTART_FIELDValues.self)
-        public var tasks_hfclkstart_field: TASKS_HFCLKSTART_FIELD
+        var tasks_hfclkstart_field: TASKS_HFCLKSTART_FIELD
     }
 
     /// Stop HFXO crystal oscillator
     @Register(bitWidth: 32)
-    public struct TASKS_HFCLKSTOP {
+    struct TASKS_HFCLKSTOP {
         /// Stop HFXO crystal oscillator
         @WriteOnly(bits: 0..<1, as: TASKS_HFCLKSTOP_FIELDValues.self)
-        public var tasks_hfclkstop_field: TASKS_HFCLKSTOP_FIELD
+        var tasks_hfclkstop_field: TASKS_HFCLKSTOP_FIELD
     }
 
     /// Start LFCLK
     @Register(bitWidth: 32)
-    public struct TASKS_LFCLKSTART {
+    struct TASKS_LFCLKSTART {
         /// Start LFCLK
         @WriteOnly(bits: 0..<1, as: TASKS_LFCLKSTART_FIELDValues.self)
-        public var tasks_lfclkstart_field: TASKS_LFCLKSTART_FIELD
+        var tasks_lfclkstart_field: TASKS_LFCLKSTART_FIELD
     }
 
     /// Stop LFCLK
     @Register(bitWidth: 32)
-    public struct TASKS_LFCLKSTOP {
+    struct TASKS_LFCLKSTOP {
         /// Stop LFCLK
         @WriteOnly(bits: 0..<1, as: TASKS_LFCLKSTOP_FIELDValues.self)
-        public var tasks_lfclkstop_field: TASKS_LFCLKSTOP_FIELD
+        var tasks_lfclkstop_field: TASKS_LFCLKSTOP_FIELD
     }
 
     /// Start calibration of LFRC
     @Register(bitWidth: 32)
-    public struct TASKS_CAL {
+    struct TASKS_CAL {
         /// Start calibration of LFRC
         @WriteOnly(bits: 0..<1, as: TASKS_CAL_FIELDValues.self)
-        public var tasks_cal_field: TASKS_CAL_FIELD
+        var tasks_cal_field: TASKS_CAL_FIELD
     }
 
     /// Start calibration timer
     @Register(bitWidth: 32)
-    public struct TASKS_CTSTART {
+    struct TASKS_CTSTART {
         /// Start calibration timer
         @WriteOnly(bits: 0..<1, as: TASKS_CTSTART_FIELDValues.self)
-        public var tasks_ctstart_field: TASKS_CTSTART_FIELD
+        var tasks_ctstart_field: TASKS_CTSTART_FIELD
     }
 
     /// Stop calibration timer
     @Register(bitWidth: 32)
-    public struct TASKS_CTSTOP {
+    struct TASKS_CTSTOP {
         /// Stop calibration timer
         @WriteOnly(bits: 0..<1, as: TASKS_CTSTOP_FIELDValues.self)
-        public var tasks_ctstop_field: TASKS_CTSTOP_FIELD
+        var tasks_ctstop_field: TASKS_CTSTOP_FIELD
     }
 
     /// HFXO crystal oscillator started
     @Register(bitWidth: 32)
-    public struct EVENTS_HFCLKSTARTED {
+    struct EVENTS_HFCLKSTARTED {
         /// HFXO crystal oscillator started
         @ReadWrite(bits: 0..<1, as: EVENTS_HFCLKSTARTED_FIELDValues.self)
-        public var events_hfclkstarted_field: EVENTS_HFCLKSTARTED_FIELD
+        var events_hfclkstarted_field: EVENTS_HFCLKSTARTED_FIELD
     }
 
     /// LFCLK started
     @Register(bitWidth: 32)
-    public struct EVENTS_LFCLKSTARTED {
+    struct EVENTS_LFCLKSTARTED {
         /// LFCLK started
         @ReadWrite(bits: 0..<1, as: EVENTS_LFCLKSTARTED_FIELDValues.self)
-        public var events_lfclkstarted_field: EVENTS_LFCLKSTARTED_FIELD
+        var events_lfclkstarted_field: EVENTS_LFCLKSTARTED_FIELD
     }
 
     /// Calibration of LFRC completed
     @Register(bitWidth: 32)
-    public struct EVENTS_DONE {
+    struct EVENTS_DONE {
         /// Calibration of LFRC completed
         @ReadWrite(bits: 0..<1, as: EVENTS_DONE_FIELDValues.self)
-        public var events_done_field: EVENTS_DONE_FIELD
+        var events_done_field: EVENTS_DONE_FIELD
     }
 
     /// Calibration timer timeout
     @Register(bitWidth: 32)
-    public struct EVENTS_CTTO {
+    struct EVENTS_CTTO {
         /// Calibration timer timeout
         @ReadWrite(bits: 0..<1, as: EVENTS_CTTO_FIELDValues.self)
-        public var events_ctto_field: EVENTS_CTTO_FIELD
+        var events_ctto_field: EVENTS_CTTO_FIELD
     }
 
     /// Calibration timer has been started and is ready to process new tasks
     @Register(bitWidth: 32)
-    public struct EVENTS_CTSTARTED {
+    struct EVENTS_CTSTARTED {
         /// Calibration timer has been started and is ready to process new tasks
         @ReadWrite(bits: 0..<1, as: EVENTS_CTSTARTED_FIELDValues.self)
-        public var events_ctstarted_field: EVENTS_CTSTARTED_FIELD
+        var events_ctstarted_field: EVENTS_CTSTARTED_FIELD
     }
 
     /// Calibration timer has been stopped and is ready to process new tasks
     @Register(bitWidth: 32)
-    public struct EVENTS_CTSTOPPED {
+    struct EVENTS_CTSTOPPED {
         /// Calibration timer has been stopped and is ready to process new tasks
         @ReadWrite(bits: 0..<1, as: EVENTS_CTSTOPPED_FIELDValues.self)
-        public var events_ctstopped_field: EVENTS_CTSTOPPED_FIELD
+        var events_ctstopped_field: EVENTS_CTSTOPPED_FIELD
     }
 
     /// Enable interrupt
     @Register(bitWidth: 32)
-    public struct INTENSET {
+    struct INTENSET {
         /// Write '1' to enable interrupt for event HFCLKSTARTED
         @ReadWrite(bits: 0..<1)
-        public var hfclkstarted: HFCLKSTARTED
+        var hfclkstarted: HFCLKSTARTED
 
         /// Write '1' to enable interrupt for event LFCLKSTARTED
         @ReadWrite(bits: 1..<2)
-        public var lfclkstarted: LFCLKSTARTED
+        var lfclkstarted: LFCLKSTARTED
 
         /// Write '1' to enable interrupt for event DONE
         @ReadWrite(bits: 3..<4)
-        public var done: DONE
+        var done: DONE
 
         /// Write '1' to enable interrupt for event CTTO
         @ReadWrite(bits: 4..<5)
-        public var ctto: CTTO
+        var ctto: CTTO
 
         /// Write '1' to enable interrupt for event CTSTARTED
         @ReadWrite(bits: 10..<11)
-        public var ctstarted: CTSTARTED
+        var ctstarted: CTSTARTED
 
         /// Write '1' to enable interrupt for event CTSTOPPED
         @ReadWrite(bits: 11..<12)
-        public var ctstopped: CTSTOPPED
+        var ctstopped: CTSTOPPED
     }
 
     /// Disable interrupt
     @Register(bitWidth: 32)
-    public struct INTENCLR {
+    struct INTENCLR {
         /// Write '1' to disable interrupt for event HFCLKSTARTED
         @ReadWrite(bits: 0..<1)
-        public var hfclkstarted: HFCLKSTARTED
+        var hfclkstarted: HFCLKSTARTED
 
         /// Write '1' to disable interrupt for event LFCLKSTARTED
         @ReadWrite(bits: 1..<2)
-        public var lfclkstarted: LFCLKSTARTED
+        var lfclkstarted: LFCLKSTARTED
 
         /// Write '1' to disable interrupt for event DONE
         @ReadWrite(bits: 3..<4)
-        public var done: DONE
+        var done: DONE
 
         /// Write '1' to disable interrupt for event CTTO
         @ReadWrite(bits: 4..<5)
-        public var ctto: CTTO
+        var ctto: CTTO
 
         /// Write '1' to disable interrupt for event CTSTARTED
         @ReadWrite(bits: 10..<11)
-        public var ctstarted: CTSTARTED
+        var ctstarted: CTSTARTED
 
         /// Write '1' to disable interrupt for event CTSTOPPED
         @ReadWrite(bits: 11..<12)
-        public var ctstopped: CTSTOPPED
+        var ctstopped: CTSTOPPED
     }
 
     /// Status indicating that HFCLKSTART task has been triggered
     @Register(bitWidth: 32)
-    public struct HFCLKRUN {
+    struct HFCLKRUN {
         /// HFCLKSTART task triggered or not
         @ReadOnly(bits: 0..<1, as: STATUSValues.self)
-        public var status: STATUS
+        var status: STATUS
     }
 
     /// HFCLK status
     @Register(bitWidth: 32)
-    public struct HFCLKSTAT {
+    struct HFCLKSTAT {
         /// Source of HFCLK
         @ReadOnly(bits: 0..<1, as: SRCValues.self)
-        public var src: SRC
+        var src: SRC
 
         /// HFCLK state
         @ReadOnly(bits: 16..<17, as: STATEValues.self)
-        public var state: STATE
+        var state: STATE
     }
 
     /// Status indicating that LFCLKSTART task has been triggered
     @Register(bitWidth: 32)
-    public struct LFCLKRUN {
+    struct LFCLKRUN {
         /// LFCLKSTART task triggered or not
         @ReadOnly(bits: 0..<1, as: STATUSValues.self)
-        public var status: STATUS
+        var status: STATUS
     }
 
     /// LFCLK status
     @Register(bitWidth: 32)
-    public struct LFCLKSTAT {
+    struct LFCLKSTAT {
         /// Source of LFCLK
         @ReadOnly(bits: 0..<2, as: SRCValues.self)
-        public var src: SRC
+        var src: SRC
 
         /// LFCLK state
         @ReadOnly(bits: 16..<17, as: STATEValues.self)
-        public var state: STATE
+        var state: STATE
     }
 
     /// Copy of LFCLKSRC register, set when LFCLKSTART task was triggered
     @Register(bitWidth: 32)
-    public struct LFCLKSRCCOPY {
+    struct LFCLKSRCCOPY {
         /// Clock source
         @ReadOnly(bits: 0..<2, as: SRCValues.self)
-        public var src: SRC
+        var src: SRC
     }
 
     /// Clock source for the LFCLK
     @Register(bitWidth: 32)
-    public struct LFCLKSRC {
+    struct LFCLKSRC {
         /// Clock source
         @ReadWrite(bits: 0..<2, as: SRCValues.self)
-        public var src: SRC
+        var src: SRC
 
         /// Enable or disable bypass of LFCLK crystal oscillator with external clock source
         @ReadWrite(bits: 16..<17, as: BYPASSValues.self)
-        public var bypass: BYPASS
+        var bypass: BYPASS
 
         /// Enable or disable external source for LFCLK
         @ReadWrite(bits: 17..<18, as: EXTERNALValues.self)
-        public var external: EXTERNAL
+        var external: EXTERNAL
     }
 
     /// HFXO debounce time. The HFXO is started by triggering the TASKS_HFCLKSTART task.
     @Register(bitWidth: 32)
-    public struct HFXODEBOUNCE {
+    struct HFXODEBOUNCE {
         /// HFXO debounce time. Debounce time = HFXODEBOUNCE * 16 us.
         @ReadWrite(bits: 0..<8, as: HFXODEBOUNCE_FIELDValues.self)
-        public var hfxodebounce_field: HFXODEBOUNCE_FIELD
+        var hfxodebounce_field: HFXODEBOUNCE_FIELD
     }
 
     /// LFXO debounce time. The LFXO is started by triggering the TASKS_LFCLKSTART task when the LFCLKSRC register is configured for Xtal.
     @Register(bitWidth: 32)
-    public struct LFXODEBOUNCE {
+    struct LFXODEBOUNCE {
         /// LFXO debounce time.
         @ReadWrite(bits: 0..<1, as: LFXODEBOUNCE_FIELDValues.self)
-        public var lfxodebounce_field: LFXODEBOUNCE_FIELD
+        var lfxodebounce_field: LFXODEBOUNCE_FIELD
     }
 
     /// Calibration timer interval
     @Register(bitWidth: 32)
-    public struct CTIV {
+    struct CTIV {
         /// Calibration timer interval in multiple of 0.25 seconds. Range: 0.25 seconds to 31.75 seconds.
         @ReadWrite(bits: 0..<7)
-        public var ctiv_field: CTIV_FIELD
+        var ctiv_field: CTIV_FIELD
     }
 
     /// Clocking options for the trace port debug interface
     @Register(bitWidth: 32)
-    public struct TRACECONFIG {
+    struct TRACECONFIG {
         /// Speed of trace port clock. Note that the TRACECLK pin will output this clock divided by two.
         @ReadWrite(bits: 0..<2, as: TRACEPORTSPEEDValues.self)
-        public var traceportspeed: TRACEPORTSPEED
+        var traceportspeed: TRACEPORTSPEED
 
         /// Pin multiplexing of trace signals. See pin assignment chapter for more details.
         @ReadWrite(bits: 16..<18, as: TRACEMUXValues.self)
-        public var tracemux: TRACEMUX
+        var tracemux: TRACEMUX
     }
 }
 
 extension CLOCK.TASKS_HFCLKSTART {
-    public struct TASKS_HFCLKSTART_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct TASKS_HFCLKSTART_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Trigger task
-        nonisolated(unsafe) public static let Trigger = Self(rawValue: 0x1)
+        static let Trigger = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.TASKS_HFCLKSTOP {
-    public struct TASKS_HFCLKSTOP_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct TASKS_HFCLKSTOP_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Trigger task
-        nonisolated(unsafe) public static let Trigger = Self(rawValue: 0x1)
+        static let Trigger = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.TASKS_LFCLKSTART {
-    public struct TASKS_LFCLKSTART_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct TASKS_LFCLKSTART_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Trigger task
-        nonisolated(unsafe) public static let Trigger = Self(rawValue: 0x1)
+        static let Trigger = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.TASKS_LFCLKSTOP {
-    public struct TASKS_LFCLKSTOP_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct TASKS_LFCLKSTOP_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Trigger task
-        nonisolated(unsafe) public static let Trigger = Self(rawValue: 0x1)
+        static let Trigger = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.TASKS_CAL {
-    public struct TASKS_CAL_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct TASKS_CAL_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Trigger task
-        nonisolated(unsafe) public static let Trigger = Self(rawValue: 0x1)
+        static let Trigger = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.TASKS_CTSTART {
-    public struct TASKS_CTSTART_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct TASKS_CTSTART_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Trigger task
-        nonisolated(unsafe) public static let Trigger = Self(rawValue: 0x1)
+        static let Trigger = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.TASKS_CTSTOP {
-    public struct TASKS_CTSTOP_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct TASKS_CTSTOP_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Trigger task
-        nonisolated(unsafe) public static let Trigger = Self(rawValue: 0x1)
+        static let Trigger = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.EVENTS_HFCLKSTARTED {
-    public struct EVENTS_HFCLKSTARTED_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct EVENTS_HFCLKSTARTED_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Event not generated
-         nonisolated(unsafe) public static let NotGenerated = Self(rawValue: 0x0)
+        static let NotGenerated = Self(rawValue: 0x0)
 
         /// Event generated
-         nonisolated(unsafe) public static let Generated = Self(rawValue: 0x1)
+        static let Generated = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.EVENTS_LFCLKSTARTED {
-    public struct EVENTS_LFCLKSTARTED_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct EVENTS_LFCLKSTARTED_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Event not generated
-         nonisolated(unsafe) public static let NotGenerated = Self(rawValue: 0x0)
+        static let NotGenerated = Self(rawValue: 0x0)
 
         /// Event generated
-         nonisolated(unsafe) public static let Generated = Self(rawValue: 0x1)
+        static let Generated = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.EVENTS_DONE {
-    public struct EVENTS_DONE_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct EVENTS_DONE_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Event not generated
-         nonisolated(unsafe) public static let NotGenerated = Self(rawValue: 0x0)
+        static let NotGenerated = Self(rawValue: 0x0)
 
         /// Event generated
-         nonisolated(unsafe) public static let Generated = Self(rawValue: 0x1)
+        static let Generated = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.EVENTS_CTTO {
-    public struct EVENTS_CTTO_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct EVENTS_CTTO_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Event not generated
-         nonisolated(unsafe) public static let NotGenerated = Self(rawValue: 0x0)
+        static let NotGenerated = Self(rawValue: 0x0)
 
         /// Event generated
-         nonisolated(unsafe) public static let Generated = Self(rawValue: 0x1)
+        static let Generated = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.EVENTS_CTSTARTED {
-    public struct EVENTS_CTSTARTED_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct EVENTS_CTSTARTED_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Event not generated
-         nonisolated(unsafe) public static let NotGenerated = Self(rawValue: 0x0)
+        static let NotGenerated = Self(rawValue: 0x0)
 
         /// Event generated
-         nonisolated(unsafe) public static let Generated = Self(rawValue: 0x1)
+        static let Generated = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.EVENTS_CTSTOPPED {
-    public struct EVENTS_CTSTOPPED_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct EVENTS_CTSTOPPED_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Event not generated
-         nonisolated(unsafe) public static let NotGenerated = Self(rawValue: 0x0)
+        static let NotGenerated = Self(rawValue: 0x0)
 
         /// Event generated
-         nonisolated(unsafe) public static let Generated = Self(rawValue: 0x1)
+        static let Generated = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.HFCLKRUN {
-    public struct STATUSValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct STATUSValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Task not triggered
-        nonisolated(unsafe) public static let NotTriggered = Self(rawValue: 0x0)
+        static let NotTriggered = Self(rawValue: 0x0)
 
         /// Task triggered
-        nonisolated(unsafe) public static let Triggered = Self(rawValue: 0x1)
+        static let Triggered = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.HFCLKSTAT {
-    public struct SRCValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct SRCValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// 64 MHz internal oscillator (HFINT)
-        nonisolated(unsafe) public static let RC = Self(rawValue: 0x0)
+        static let RC = Self(rawValue: 0x0)
 
         /// 64 MHz crystal oscillator (HFXO)
-        nonisolated(unsafe) public static let Xtal = Self(rawValue: 0x1)
+        static let Xtal = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.HFCLKSTAT {
-    public struct STATEValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct STATEValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// HFCLK not running
-        nonisolated(unsafe) public static let NotRunning = Self(rawValue: 0x0)
+        static let NotRunning = Self(rawValue: 0x0)
 
         /// HFCLK running
-        nonisolated(unsafe) public static let Running = Self(rawValue: 0x1)
+        static let Running = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.LFCLKRUN {
-    public struct STATUSValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct STATUSValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Task not triggered
-        nonisolated(unsafe) public static let NotTriggered = Self(rawValue: 0x0)
+        static let NotTriggered = Self(rawValue: 0x0)
 
         /// Task triggered
-        nonisolated(unsafe) public static let Triggered = Self(rawValue: 0x1)
+        static let Triggered = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.LFCLKSTAT {
-    public struct SRCValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 2
+    struct SRCValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 2
 
         /// 32.768 kHz RC oscillator (LFRC)
-        nonisolated(unsafe) public static let RC = Self(rawValue: 0x0)
+        static let RC = Self(rawValue: 0x0)
 
         /// 32.768 kHz crystal oscillator (LFXO)
-        nonisolated(unsafe) public static let Xtal = Self(rawValue: 0x1)
+        static let Xtal = Self(rawValue: 0x1)
 
         /// 32.768 kHz synthesized from HFCLK (LFSYNT)
-        nonisolated(unsafe) public static let Synth = Self(rawValue: 0x2)
+        static let Synth = Self(rawValue: 0x2)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.LFCLKSTAT {
-    public struct STATEValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct STATEValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// LFCLK not running
-        nonisolated(unsafe) public static let NotRunning = Self(rawValue: 0x0)
+        static let NotRunning = Self(rawValue: 0x0)
 
         /// LFCLK running
-        nonisolated(unsafe) public static let Running = Self(rawValue: 0x1)
+        static let Running = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.LFCLKSRCCOPY {
-    public struct SRCValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 2
+    struct SRCValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 2
 
         /// 32.768 kHz RC oscillator (LFRC)
-        nonisolated(unsafe) public static let RC = Self(rawValue: 0x0)
+        static let RC = Self(rawValue: 0x0)
 
         /// 32.768 kHz crystal oscillator (LFXO)
-        nonisolated(unsafe) public static let Xtal = Self(rawValue: 0x1)
+        static let Xtal = Self(rawValue: 0x1)
 
         /// 32.768 kHz synthesized from HFCLK (LFSYNT)
-        nonisolated(unsafe) public static let Synth = Self(rawValue: 0x2)
+        static let Synth = Self(rawValue: 0x2)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.LFCLKSRC {
-    public struct SRCValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 2
+    struct SRCValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 2
 
         /// 32.768 kHz RC oscillator (LFRC)
-        nonisolated(unsafe) public static let RC = Self(rawValue: 0x0)
+        static let RC = Self(rawValue: 0x0)
 
         /// 32.768 kHz crystal oscillator (LFXO)
-        nonisolated(unsafe) public static let Xtal = Self(rawValue: 0x1)
+        static let Xtal = Self(rawValue: 0x1)
 
         /// 32.768 kHz synthesized from HFCLK (LFSYNT)
-        nonisolated(unsafe) public static let Synth = Self(rawValue: 0x2)
+        static let Synth = Self(rawValue: 0x2)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.LFCLKSRC {
-    public struct BYPASSValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct BYPASSValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Disable (use with Xtal or low-swing external source)
-        nonisolated(unsafe) public static let Disabled = Self(rawValue: 0x0)
+        static let Disabled = Self(rawValue: 0x0)
 
         /// Enable (use with rail-to-rail external source)
-        nonisolated(unsafe) public static let Enabled = Self(rawValue: 0x1)
+        static let Enabled = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.LFCLKSRC {
-    public struct EXTERNALValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct EXTERNALValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// Disable external source (use with Xtal)
-        nonisolated(unsafe) public static let Disabled = Self(rawValue: 0x0)
+        static let Disabled = Self(rawValue: 0x0)
 
         /// Enable use of external source instead of Xtal (SRC needs to be set to Xtal)
-        nonisolated(unsafe) public static let Enabled = Self(rawValue: 0x1)
+        static let Enabled = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.HFXODEBOUNCE {
-    public struct HFXODEBOUNCE_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 8
+    struct HFXODEBOUNCE_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 8
 
         /// 256 us debounce time. Recommended for 1.6 mm x 2.0 mm crystals and larger.
-        nonisolated(unsafe) public static let Db256us = Self(rawValue: 0x10)
+        static let Db256us = Self(rawValue: 0x10)
 
         /// 1024 us debounce time. Recommended for 1.6 mm x 1.2 mm crystals and smaller.
-        nonisolated(unsafe) public static let Db1024us = Self(rawValue: 0x40)
+        static let Db1024us = Self(rawValue: 0x40)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.LFXODEBOUNCE {
-    public struct LFXODEBOUNCE_FIELDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 1
+    struct LFXODEBOUNCE_FIELDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 1
 
         /// 8192 32.768 kHz periods, or 0.25 s. Recommended for normal Operating Temperature conditions.
-        nonisolated(unsafe) public static let Normal = Self(rawValue: 0x0)
+        static let Normal = Self(rawValue: 0x0)
 
         /// 16384 32.768 kHz periods, or 0.5 s. Recommended for Extended Operating Temperature conditions.
-        nonisolated(unsafe) public static let Extended = Self(rawValue: 0x1)
+        static let Extended = Self(rawValue: 0x1)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.TRACECONFIG {
-    public struct TRACEPORTSPEEDValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 2
+    struct TRACEPORTSPEEDValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 2
 
         /// 32 MHz trace port clock (TRACECLK = 16 MHz)
-        nonisolated(unsafe) public static let _32MHz = Self(rawValue: 0x0)
+        static let _32MHz = Self(rawValue: 0x0)
 
         /// 16 MHz trace port clock (TRACECLK = 8 MHz)
-        nonisolated(unsafe) public static let _16MHz = Self(rawValue: 0x1)
+        static let _16MHz = Self(rawValue: 0x1)
 
         /// 8 MHz trace port clock (TRACECLK = 4 MHz)
-        nonisolated(unsafe) public static let _8MHz = Self(rawValue: 0x2)
+        static let _8MHz = Self(rawValue: 0x2)
 
         /// 4 MHz trace port clock (TRACECLK = 2 MHz)
-        nonisolated(unsafe) public static let _4MHz = Self(rawValue: 0x3)
+        static let _4MHz = Self(rawValue: 0x3)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }
 }
 
 extension CLOCK.TRACECONFIG {
-    public struct TRACEMUXValues: BitFieldProjectable, RawRepresentable {
-        public static let bitWidth = 2
+    struct TRACEMUXValues: BitFieldProjectable, RawRepresentable {
+        static let bitWidth = 2
 
         /// No trace signals routed to pins. All pins can be used as regular GPIOs.
-        nonisolated(unsafe) public static let GPIO = Self(rawValue: 0x0)
+        static let GPIO = Self(rawValue: 0x0)
 
         /// SWO trace signal routed to pin. Remaining pins can be used as regular GPIOs.
-        nonisolated(unsafe) public static let Serial = Self(rawValue: 0x1)
+        static let Serial = Self(rawValue: 0x1)
 
         /// All trace signals (TRACECLK and TRACEDATA[n]) routed to pins.
-        nonisolated(unsafe) public static let Parallel = Self(rawValue: 0x2)
+        static let Parallel = Self(rawValue: 0x2)
 
-        public var rawValue: UInt8
+        var rawValue: UInt8
 
         @inlinable @inline(__always)
-        public init(rawValue: Self.RawValue) {
+        init(rawValue: Self.RawValue) {
             self.rawValue = rawValue
         }
     }

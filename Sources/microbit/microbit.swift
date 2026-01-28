@@ -1,18 +1,16 @@
-import Device
 import Support
 import MMIO
 
 @main
 struct Application {
     static func main() {
-        var arr = [1, 2, 3]
-        p0.pin_cnf[21].modify { rw in
-            rw.raw.dir = 1
+        let arr = [1, 2, 3]
+        p0.pin_cnf[21].write { w in
+            w.dir = .Output
         }
-        p0.pin_cnf[28].modify { rw in
-            rw.raw.dir = 1
+        p0.pin_cnf[28].write { w in
+            w.dir = .Output
         }
-
         enableClock()
         serialInit()
 
@@ -49,7 +47,7 @@ struct Application {
             rw.enable_field = .Disabled
         }
         uart0.baudrate.write { rw in
-            rw.baudrate_field = .Baud9600
+            rw.baudrate_field = .Baud115200
         }
         uart0.config.modify { rw in
             rw.parity = .Excluded
@@ -69,9 +67,9 @@ struct Application {
     }
 
     static func serialPutc(_ char: UInt8) {
-        uart0.txd.modify { r, w in
+        uart0.txd.write { w in
             w.raw.txd_field = UInt32(char)
         }
-        while uart0.events_txdrdy.read().events_txdrdy_field == .NotGenerated {}
+        while uart0.events_ncts.read().events_ncts_field == .Generated {}
     }
 }
